@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EEGFilesRename", "EEGFilesRename.csproj", "{428BFDC4-FD9D-4891-B30E-1E5A0D8F848E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{428BFDC4-FD9D-4891-B30E-1E5A0D8F848E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428BFDC4-FD9D-4891-B30E-1E5A0D8F848E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428BFDC4-FD9D-4891-B30E-1E5A0D8F848E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428BFDC4-FD9D-4891-B30E-1E5A0D8F848E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE36F10A-79C0-48EA-9B65-CC139E6C62FA}
+	EndGlobalSection
+EndGlobal

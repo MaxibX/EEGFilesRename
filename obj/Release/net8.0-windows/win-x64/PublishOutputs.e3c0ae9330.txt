@@ -1,0 +1,2 @@
+C:\Users\User\source\repos\EEGFilesRename\bin\Release\net8.0-windows\publish\win-x64\EEGFilesRename.pdb
+C:\Users\User\source\repos\EEGFilesRename\bin\Release\net8.0-windows\publish\win-x64\EEGFilesRename.exe
