@@ -1,0 +1,6 @@
+obj/
+bin/Debug/
+bin/Release/net8.0-windows/EEGFilesRename.*
+bin/Release/net8.0-windows/win-x64/
+bin/Release/net8.0-windows/publish/win-x64/*.pdb
+Properties/
