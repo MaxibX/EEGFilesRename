@@ -18,6 +18,12 @@
     <Compile Update="WindowErrorTxt.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WindowErrorVhdr.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowErrorVmrk.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="WindowInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -36,6 +42,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowErrorTxt.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowErrorVhdr.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowErrorVmrk.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowInfo.xaml">

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Names
+namespace EEGFilesRename
 {
     /// <summary>
     /// Логика взаимодействия для WindowSuccess.xaml

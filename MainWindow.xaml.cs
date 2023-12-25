@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Names
+namespace EEGFilesRename
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -69,6 +69,20 @@ namespace Names
                 WindowErrorTxt windowErrorTxt = new WindowErrorTxt();
                 windowErrorTxt.Owner = this;
                 windowErrorTxt.Show();
+                return;
+            }
+            if (!System.IO.Path.Exists(inFilePathVmrk))
+            {
+                WindowErrorVmrk windowErrorVmrk = new WindowErrorVmrk();
+                windowErrorVmrk.Owner = this;
+                windowErrorVmrk.Show();
+                return;
+            }
+            if (!System.IO.Path.Exists(inFilePathVhdr))
+            {
+                WindowErrorVhdr windowErrorVhdr = new WindowErrorVhdr();
+                windowErrorVhdr.Owner = this;
+                windowErrorVhdr.Show();
                 return;
             }
             string outDirPath = inDirPath; // to do

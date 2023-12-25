@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace EEGFilesRename
 {
     /// <summary>
-    /// Логика взаимодействия для WindowErrorEeg.xaml
+    /// Логика взаимодействия для WindowErrorVhdr.xaml
     /// </summary>
-    public partial class WindowErrorEeg : Window
+    public partial class WindowErrorVhdr : Window
     {
-        public WindowErrorEeg()
+        public WindowErrorVhdr()
         {
             InitializeComponent();
         }
