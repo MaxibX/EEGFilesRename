@@ -126,8 +126,12 @@ namespace EEGFilesRename
                     writerVhdr.WriteLine(line);
                 }
             }
+            readerVmrk.Close();
+            readerVhdr.Close();
             writerVmrk.Close();
             writerVhdr.Close();
+            File.Delete(inFilePathVmrk);
+            File.Delete(inFilePathVhdr);
             inFilePathEeg = inDirPath + "\\" + System.IO.Path.GetFileNameWithoutExtension(inFilePathVmrk) + eegExt;
             outFilePathEeg = outDirPath + "\\" + txtName.Text + eegExt;
             try
