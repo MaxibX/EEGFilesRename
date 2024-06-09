@@ -3,5 +3,11 @@ bin/Debug/
 bin/Release/net8.0-windows/EEGFilesRename.*
 bin/Release/net8.0-windows/win-x64/
 bin/Release/net8.0-windows/publish/win-x64/*.pdb
+bin/Release/net8.0-windows/win-x86/
+bin/Release/net8.0-windows/publish/win-x86/*.pdb
+bin/Release/net8.0-windows/publish/*.json
+bin/Release/net8.0-windows/publish/*.dll
+bin/Release/net8.0-windows/publish/*.exe
+bin/Release/net8.0-windows/publish/*.pdb
 Properties/
 .vs/

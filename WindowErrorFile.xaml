@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Names"
         mc:Ignorable="d"
-        Title="Ошибка" Height="240" Width="240" ResizeMode="NoResize">
+        Title="Ошибка" Height="180" Width="240" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="Bahnschrift" FontSize="20" TextWrapping="Wrap">Открыт файл не ЭЭГ формата</TextBlock>
-        <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" FontFamily="Bahnschrift" FontSize="14" Click="ButtonExit_Click">ОК</Button>
+        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="14" TextWrapping="Wrap">Открыт файл не ЭЭГ формата</TextBlock>
+        <Button x:Name="btnExit" Grid.Column="0" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2" Click="ButtonExit_Click">ОК</Button>
     </Grid>
 </Window>

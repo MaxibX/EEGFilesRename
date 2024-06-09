@@ -1,17 +1,6 @@
 ﻿using Microsoft.Win32;
-using System.Diagnostics;
 using System.IO;
-using System.Reflection.PortableExecutable;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EEGFilesRename
 {
@@ -24,34 +13,36 @@ namespace EEGFilesRename
         {
             InitializeComponent();
         }
-        private static string inFilePathVmrk;
-        private static string inFilePathVhdr;
-        private static string inFilePathEeg;
-        private static string inDirPath;
-        private static string eegExt;
-        private static string outFilePathVmrk;
-        private static string outFilePathVhdr;
-        private static string outFilePathEeg;
+        private static string? inFilePathVmrk = "";
+        private static string? inFilePathVhdr = "";
+        private static string? inFilePathEeg = "";
+        private static string? inFile = "";
+        private static string? inDirPath = "";
+        private static string? eegExt = "";
+        private static string? outFilePathVmrk = "";
+        private static string? outFilePathVhdr = "";
+        private static string? outFilePathEeg = "";
         private void ButtonFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
 
             OpenFileDialog1.ShowDialog();
             string inFilePath = OpenFileDialog1.FileName;
-            if (System.IO.Path.GetDirectoryName(inFilePath) == null || System.IO.Path.GetDirectoryName(inFilePath) == string.Empty)
+            if (Path.GetDirectoryName(inFilePath) == null || Path.GetDirectoryName(inFilePath) == string.Empty)
             {
                 return;
             }
             else
             {
-                inDirPath = System.IO.Path.GetDirectoryName(inFilePath);
+                inDirPath = Path.GetDirectoryName(inFilePath);
             }
-            string inFileExt = System.IO.Path.GetExtension(inFilePath);
+            string inFileExt = Path.GetExtension(inFilePath);
             if (inFileExt == ".vmrk" || inFileExt == ".vhdr" || inFileExt == ".eeg" || inFileExt == ".avg" || inFileExt == ".seg")
             {
-                inFilePathVmrk = inDirPath + "\\" + System.IO.Path.GetFileNameWithoutExtension(inFilePath) + ".vmrk";
-                inFilePathVhdr = inDirPath + "\\" + System.IO.Path.GetFileNameWithoutExtension(inFilePath) + ".vhdr";
-                textFile.Text = System.IO.Path.GetFileName(inFilePath);
+                inFile = Path.GetFileNameWithoutExtension(inFilePath);
+                inFilePathVmrk = inDirPath + "\\" + inFile + ".vmrk";
+                inFilePathVhdr = inDirPath + "\\" + inFile + ".vhdr";
+                textFile.Text = Path.GetFileName(inFilePath);
             }
             else
             {
@@ -71,36 +62,38 @@ namespace EEGFilesRename
                 windowErrorTxt.Show();
                 return;
             }
-            if (!System.IO.Path.Exists(inFilePathVmrk))
+            if (!Path.Exists(inFilePathVmrk))
             {
                 WindowErrorVmrk windowErrorVmrk = new WindowErrorVmrk();
                 windowErrorVmrk.Owner = this;
                 windowErrorVmrk.Show();
                 return;
             }
-            if (!System.IO.Path.Exists(inFilePathVhdr))
+            if (!Path.Exists(inFilePathVhdr))
             {
                 WindowErrorVhdr windowErrorVhdr = new WindowErrorVhdr();
                 windowErrorVhdr.Owner = this;
                 windowErrorVhdr.Show();
                 return;
             }
-            string outDirPath = inDirPath; // to do
-            outFilePathVmrk = outDirPath + "\\" + txtName.Text + ".vmrk";
-            outFilePathVhdr = outDirPath + "\\" + txtName.Text + ".vhdr";
-            
+            outFilePathVmrk = inDirPath + "\\" + txtName.Text + ".vmrk";
+            outFilePathVhdr = inDirPath + "\\" + txtName.Text + ".vhdr";
+
             StreamReader readerVmrk = new StreamReader(inFilePathVmrk);
             StreamReader readerVhdr = new StreamReader(inFilePathVhdr);
             StreamWriter writerVmrk = new StreamWriter(outFilePathVmrk, false);
             StreamWriter writerVhdr = new StreamWriter(outFilePathVhdr, false);
-            string line1;
+            string? line, line1;
             while (!readerVmrk.EndOfStream)
             {
-                string line = readerVmrk.ReadLine();
-                if (line.Contains("DataFile"))
+                line = readerVmrk.ReadLine();
+                if (line != null && line.Contains("DataFile="))
                 {
-                    eegExt = "." + line.Split('.')[line.Split('.').Length - 1];
-                    line1 = "DataFile=" + txtName.Text + "." + eegExt;
+                    if (line.Split('.').Length > 1)
+                    {
+                        eegExt = "." + line.Split('.')[line.Split('.').Length - 1];
+                    }
+                    line1 = "DataFile=" + txtName.Text + eegExt;
                     writerVmrk.WriteLine(line1);
                 }
                 else
@@ -110,13 +103,13 @@ namespace EEGFilesRename
             }
             while (!readerVhdr.EndOfStream)
             {
-                string line = readerVhdr.ReadLine();
-                if (line.Contains("DataFile"))
+                line = readerVhdr.ReadLine();
+                if (line != null && line.Contains("DataFile="))
                 {
-                    line1 = "DataFile=" + txtName.Text + "." + line.Split('.')[line.Split('.').Length - 1];
+                    line1 = "DataFile=" + txtName.Text + eegExt;
                     writerVhdr.WriteLine(line1);
                 }
-                else if (line.Contains("MarkerFile"))
+                else if (line != null && line.Contains("MarkerFile="))
                 {
                     line1 = "MarkerFile=" + txtName.Text + ".vmrk";
                     writerVhdr.WriteLine(line1);
@@ -132,8 +125,8 @@ namespace EEGFilesRename
             writerVhdr.Close();
             File.Delete(inFilePathVmrk);
             File.Delete(inFilePathVhdr);
-            inFilePathEeg = inDirPath + "\\" + System.IO.Path.GetFileNameWithoutExtension(inFilePathVmrk) + eegExt;
-            outFilePathEeg = outDirPath + "\\" + txtName.Text + eegExt;
+            inFilePathEeg = inDirPath + "\\" + inFile + eegExt;
+            outFilePathEeg = inDirPath + "\\" + txtName.Text + eegExt;
             try
             {
                 File.Move(inFilePathEeg, outFilePathEeg);
@@ -148,6 +141,8 @@ namespace EEGFilesRename
             WindowSuccess windowSuccess = new WindowSuccess();
             windowSuccess.Owner = this;
             windowSuccess.Show();
+            textFile.Text = string.Empty;
+            txtName.Text = string.Empty;
         }
 
         private void ButtonInfo_Click(object sender, RoutedEventArgs e)
