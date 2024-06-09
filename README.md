@@ -1,3 +1,4 @@
 # EEGFilesRename
  
-Release: [https://github.com/MaxibX/EEGFilesRename/blob/main/bin/Release/net8.0-windows/publish/win-x64/EEGFilesRename.exe](https://github.com/MaxibX/EEGFilesRename/releases/latest)
+Release (x64): [EEGFilesRename_x64_v1.0.exe](https://github.com/MaxibX/EEGFilesRename/releases/download/v1.0/EEGFilesRename_x64_v1.0.exe)
+Release (x86): [EEGFilesRename_x86_v1.0.exe](https://github.com/MaxibX/EEGFilesRename/releases/download/v1.0/EEGFilesRename_x86_v1.0.exe)
